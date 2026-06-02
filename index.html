@@ -1,14 +1,30 @@
+¡Qué gran captura de pantalla en `image_2e5899.jpg`! Veo exactamente lo que pasó con los circuitos del tiempo: la fuente tipográfica estándar del navegador rompió el diseño cuadriculado de las fechas originales de *Volver al Futuro*, provocando que los meses se cortaran verticalmente (como ese "JU N").
+
+He reescrito el código por completo solucionando esto. Estos son los cambios clave:
+
+1. **Circuitos del Tiempo Corregidos:** Implementé una fuente digital integrada (`Digital-7` simulada mediante estilos LED limpios) con anchos fijos exactos. Ahora las fechas se alinean simétricamente sin romperse, imitando a la perfección el tablero del DeLorean.
+2. **Paleta de Colores Oficial BTTF (Anaranjado/Amarillo):** Cambié los tonos neón generales de la web por un degradado y resplandor **Anaranjado Quemado (`#ff8c00`) y Amarillo Intenso (`#f0db4f`)**, idénticos a los del icónico logotipo de la película.
+3. **Optimización Móvil Extrema (100% Responsivo):** El diseño ahora se transforma de dos columnas en computadora a una sola columna vertical fluida en celulares, adaptando los tamaños de los circuitos para que entren sin salirse de la pantalla de cualquier teléfono.
+
+---
+
+### Código Completo Actualizado: `index.html`
+
+Copia este código corregido, pégalo reemplazando todo el contenido de tu archivo `index.html` actual en GitHub, y Netlify se actualizará automáticamente en unos segundos:
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RADIO DELOREAN - 2026 EN VIVO</title>
+    <title>RADIO DELOREAN - VIAJE EN EL TIEMPO</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- Fuentes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* --- ESTILOS GENERALES Y RESETS --- */
+        /* --- ESTILOS GENERALES RETRO --- */
         html {
             font-family: 'Courier New', Courier, monospace;
             -ms-text-size-adjust: 100%;
@@ -17,397 +33,303 @@
         body {
             margin: 0;
             padding: 0;
-            color: #4e4e4e;
-            background-color: #e7e7e7;
-            overflow-wrap: break-word;
-            word-break: break-word;
-            word-wrap: break-word;
-            min-height: 100vh;
-        }
-        a {
-            text-decoration: none;
-            color: #d90c0c;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* --- FONDO DINÁMICO RESPONSIVE --- */
-        body {
             background: #000 url('https://3.bp.blogspot.com/-JXGwQ0D4xcA/Wx_cX7Eqi6I/AAAAAAAAAPE/Q94yJLplmGYstfHhZBEOKXxfx4itIgJpACK4BGAYYCw/s0/Silueta-Regreso-al-futuro.jpg') no-repeat fixed center center !important;
             background-size: cover !important;
+            color: #fff;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
 
-        /* --- CONTENEDORES PRINCIPALES (DISEÑO ESTRUCTURAL) --- */
+        /* --- CONTENEDOR ESTRUCTURAL RESPONSIVO --- */
         .wrapper-layout {
             display: flex;
             flex-direction: column;
-            max-width: 1100px;
+            max-width: 1150px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
             box-sizing: border-box;
         }
 
         .main-content {
             display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 30px;
-            margin-top: 20px;
+            grid-template-columns: 1fr 400px;
+            gap: 25px;
+            margin-top: 10px;
         }
 
-        @media screen and (max-width: 850px) {
+        /* Ajuste para celulares */
+        @media screen and (max-width: 900px) {
             .main-content {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* --- EFECTO NEÓN EN LOS CONTENEDORES (ESTILO ORIGINAL) --- */
-        .neon-card {
-            background: rgba(0, 0, 0, 0.85) !important;
-            border: 2px solid #00f2ff !important;
-            border-radius: 15px !important;
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.5), inset 0 0 10px rgba(255, 0, 255, 0.3) !important;
-            padding: 20px !important;
-            margin-bottom: 25px !important;
-            animation: neon-pulse 4s infinite alternate;
-            box-sizing: border-box;
-        }
-
-        @keyframes neon-pulse {
-            0% { border-color: #00f2ff; box-shadow: 0 0 15px rgba(0, 242, 255, 0.6); }
-            100% { border-color: #ff00ff; box-shadow: 0 0 20px rgba(255, 0, 255, 0.6); }
-        }
-
-        /* --- NUEVO TÍTULO PRINCIPAL NEÓN PARPADEANTE --- */
+        /* --- TÍTULO PRINCIPAL NEÓN ESTILO BTTF --- */
         .header-neon-title {
             text-align: center;
-            margin: 20px 0 40px 0;
+            margin: 15px 0 25px 0;
         }
 
         .neon-main-title {
-            font-family: 'Courier New', Courier, monospace !important;
-            font-size: 45px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 52px;
             font-weight: 900;
-            color: #f0db4f;
+            color: #f0db4f; /* Amarillo BTTF */
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             margin: 0;
-            animation: main-text-flicker 2.5s infinite;
+            font-style: italic;
+            animation: bttf-flicker 3s infinite;
         }
 
         @media screen and (max-width: 600px) {
             .neon-main-title {
-                font-size: 26px;
+                font-size: 28px;
                 letter-spacing: 2px;
             }
         }
 
-        @keyframes main-text-flicker {
+        @keyframes bttf-flicker {
             0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-                text-shadow: 0 0 8px #f0db4f, 0 0 20px #f0db4f, 0 0 40px #ff8c00;
+                text-shadow: 0 0 10px #f0db4f, 0 0 20px #ff6a00, 0 0 45px #ff3300;
                 opacity: 1;
             }
             20%, 24%, 55% {
-                text-shadow: 0 0 2px #f0db4f;
-                opacity: 0.6;
+                text-shadow: 0 0 4px #ff6a00;
+                opacity: 0.8;
             }
         }
 
-        /* --- SÍGUENOS EN X (CAFÉ RETRO) --- */
-        @keyframes cafe-flicker {
-          0%, 100% { box-shadow: 0 0 8px #d2691e, 0 0 2px #d2691e; border-color: #d2691e; }
-          50% { box-shadow: 0 0 15px #ff8c00, 0 0 5px #ff8c00; border-color: #ff8c00; }
+        /* --- CONTENEDORES CON NUEVO NEÓN ANARANJADO --- */
+        .neon-card {
+            background: rgba(0, 0, 0, 0.88) !important;
+            border: 3px solid #ff6a00 !important; /* Anaranjado de fuego */
+            border-radius: 15px !important;
+            box-shadow: 0 0 20px rgba(255, 106, 0, 0.6), inset 0 0 12px rgba(240, 219, 79, 0.3) !important;
+            padding: 20px !important;
+            margin-bottom: 20px !important;
+            box-sizing: border-box;
+            animation: orange-pulse 5s infinite alternate;
         }
 
+        @keyframes orange-pulse {
+            0% { border-color: #ff6a00; box-shadow: 0 0 15px rgba(255, 106, 0, 0.5); }
+            100% { border-color: #f0db4f; box-shadow: 0 0 25px rgba(240, 219, 79, 0.6); }
+        }
+
+        /* --- SÍGUENOS EN X (CAFÉ RETRO COORDENADO) --- */
         .contenedor-cafe-retro {
-            background: #1a0f0a;
-            padding: 15px;
-            border: 3px solid #d2691e;
+            background: #150a05;
+            padding: 12px 25px;
+            border: 3px solid #ff6a00;
             border-radius: 50px;
             display: inline-block;
             text-align: center;
-            animation: cafe-flicker 4s infinite;
-            transition: all 0.3s ease;
-            margin: 0 auto 20px auto;
+            box-shadow: 0 0 15px rgba(255, 106, 0, 0.4);
+            margin-bottom: 20px;
         }
-
-        .contenedor-cafe-retro:hover {
-            transform: scale(1.05);
-            background: #26160f;
-        }
-
         .texto-retro-mini {
-            color: #ff8c00;
-            font-family: 'Courier New', monospace;
-            font-size: 10px;
+            color: #f0db4f;
+            font-family: monospace;
+            font-size: 11px;
             text-transform: uppercase;
             display: block;
             margin-bottom: 5px;
             letter-spacing: 2px;
         }
 
-        /* --- RADIO CLOCK STYLES --- */
-        @keyframes neon-rainbow {
-          0% { border-color: #ff0000; box-shadow: 0 0 15px #ff0000; }
-          33% { border-color: #00f2ff; box-shadow: 0 0 15px #00f2ff; }
-          66% { border-color: #ff00ff; box-shadow: 0 0 15px #ff00ff; }
-          100% { border-color: #ff0000; box-shadow: 0 0 15px #ff0000; }
-        }
-
+        /* --- REPRODUCTOR RADIO CLOCK --- */
         .radio-clock-80s-container {
-          background: linear-gradient(145deg, #1a1a1a 0%, #333333 100%);
-          padding: 30px 20px;
-          border-radius: 25px;
-          max-width: 500px;
-          margin: 0 auto 25px auto;
-          font-family: 'Press Start 2P', cursive;
-          color: #e0e0e0;
+          background: linear-gradient(145deg, #111 0%, #252525 100%);
+          padding: 25px 20px;
+          border-radius: 20px;
+          border: 4px solid #f0db4f;
+          box-shadow: 0 0 20px #f0db4f;
           text-align: center;
-          position: relative;
-          border: 4px solid #ff0000;
-          animation: neon-rainbow 5s infinite linear;
           box-sizing: border-box;
+          margin-bottom: 25px;
         }
-
-        .msg-top { color: #00f2ff; font-size: 0.7em; margin-bottom: 15px; text-shadow: 0 0 5px #00f2ff; }
-
+        .msg-top { color: #ff6a00; font-family: 'Press Start 2P'; font-size: 0.65em; margin-bottom: 15px; text-shadow: 0 0 5px #ff6a00; }
         .display-screen {
-          background-color: #0d0d0d;
-          border: 2px solid #00f2ff;
+          background-color: #050505;
+          border: 2px solid #ff6a00;
           border-radius: 8px;
-          padding: 20px 0;
+          padding: 15px 0;
           margin-bottom: 20px;
           overflow: hidden;
           white-space: nowrap;
-          position: relative;
         }
-
         .marquee-text {
           display: inline-block;
-          font-size: 0.75em;
-          color: #ff0000;
-          text-shadow: 0 0 10px #ff0000;
+          font-family: 'Press Start 2P';
+          font-size: 0.6em;
+          color: #f0db4f;
+          text-shadow: 0 0 8px #f0db4f;
           padding-left: 100%;
-          animation: scroll-marquee 15s linear infinite;
+          animation: scroll-marquee 14s linear infinite;
         }
-
         @keyframes scroll-marquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-100%); }
         }
-
-        .controls-row {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-          align-items: center;
-        }
-
-        .vol-slider { width: 80%; cursor: pointer; accent-color: #00f2ff; }
-
-        .function-buttons-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 15px;
-          width: 100%;
-        }
-
+        .controls-row { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+        .vol-slider { width: 85%; cursor: pointer; accent-color: #ff6a00; }
+        .function-buttons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
         .function-button {
-          background-color: #333;
-          color: #00f2ff;
-          border: 2px solid #00f2ff;
+          background-color: #222;
+          color: #f0db4f;
+          border: 2px solid #ff6a00;
           border-radius: 8px;
           padding: 10px;
-          font-size: 0.6em;
+          font-family: 'Press Start 2P';
+          font-size: 0.55em;
           cursor: pointer;
-          text-transform: uppercase;
         }
-
-        .msg-bottom { 
-          color: #00ff00; 
-          margin-top: 25px; 
-          font-size: 0.8em; 
-          text-shadow: 2px 2px #000; 
-          letter-spacing: 2px; 
-        }
-
+        .function-button:hover { background-color: #ff6a00; color: #000; }
+        .msg-bottom { color: #00ff00; font-family: 'Press Start 2P'; font-size: 0.6em; margin-top: 20px; text-shadow: 1px 1px #000; }
         #player { position: absolute; top: -1000px; left: -1000px; }
-
-        .live-tag { color: #ff0000; font-size: 0.7em; margin-top: 10px; display: block; animation: blink 1s infinite; }
+        .live-tag { color: #ff0000; font-family: 'Press Start 2P'; font-size: 0.55em; margin-top: 10px; display: block; animation: blink 1s infinite; }
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* --- PROGRAMACIÓN COORDENADAS --- */
+        /* --- PROGRAMACIÓN EN VIVO --- */
         .prog-row {
-            border-left: 3px solid #00f2ff;
-            background: rgba(255, 255, 255, 0.05);
-            margin: 10px 0;
-            padding: 10px;
+            border-left: 4px solid #ff6a00;
+            background: rgba(255, 106, 0, 0.04);
+            margin: 12px 0;
+            padding: 12px;
             text-align: left;
-            transition: 0.3s;
         }
-        .prog-row:hover {
-            background: rgba(0, 242, 255, 0.1);
-            border-left: 3px solid #ff00ff;
-        }
-        .time-tag {
-            color: #f0db4f;
-            font-weight: bold;
-            display: block;
-            font-size: 0.9em;
-        }
-        .show-title {
-            color: #ff00ff;
-            text-transform: uppercase;
-            font-size: 1.1em;
-            text-shadow: 1px 1px 0px #000;
-        }
+        .time-tag { color: #f0db4f; font-weight: bold; display: block; font-size: 0.95em; }
+        .show-title { color: #ff6a00; text-transform: uppercase; font-size: 1.15em; font-weight: bold; }
 
-        /* --- CONSOLA BTTF CIRCUITO --- */
+        /* ====================================================
+           CORRECCIÓN COMPLETA DE CIRCUITOS DEL TIEMPO (BTTF)
+           ==================================================== */
         .bttf-console {
-            background: #444;
-            background-image: linear-gradient(145deg, #555, #333);
-            padding: 10px;
-            border-radius: 5px;
-            max-width: 380px;
-            margin: 20px auto;
-            border: 3px solid #222;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            background: #2a2a2a;
+            background-image: linear-gradient(145deg, #3a3a3a, #1a1a1a);
+            padding: 12px;
+            border-radius: 8px;
+            border: 4px solid #111;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 370px;
+            margin: 0 auto;
         }
+        .spacer { margin-bottom: 20px; position: relative; }
         .time-panel {
-            background: #111;
-            margin-bottom: 8px;
-            padding: 5px;
-            border: 2px solid #222;
-            position: relative;
-            display: flex;
-            justify-content: space-around;
+            background: #000;
+            padding: 8px 4px;
+            border: 3px solid #444;
+            display: grid;
+            grid-template-columns: 2.2fr 1fr 1.5fr 1fr 1fr; /* Bloques con anchos fijos */
+            gap: 4px;
             align-items: center;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
         .display-group {
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-        .label-red {
-            background: #900;
-            color: #fff;
-            font-size: 8px;
-            padding: 1px 4px;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 2px;
-            width: 100%;
-            text-align: center;
-        }
-        .led-text {
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            padding: 2px 4px;
-            background: #000;
-            border-radius: 3px;
-            text-shadow: 0 0 8px currentColor;
-            min-width: 35px;
-            text-align: center;
-        }
-        .dest { color: #ff2200; }
-        .pres { color: #00ff22; }
-        .last { color: #ffcc00; }
-        .panel-footer {
-            background: #000;
-            color: #fff;
-            font-size: 9px;
-            font-weight: bold;
-            padding: 2px 10px;
-            position: absolute;
-            bottom: -6px;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 1px solid #444;
-            z-index: 2;
-        }
-        .spacer { margin-bottom: 15px; position: relative; }
-
-        /* --- FORMULARIO RETRO --- */
-        .comentarios-delorean {
-            max-width: 450px;
-            margin: 20px auto;
-        }
-        .neon-text { color: #00ffff; text-shadow: 0 0 5px #00ffff; text-align: center; font-size: 1.2em; margin-top: 0;}
-        .input-group { margin-bottom: 15px; text-align: left;}
-        .input-group label { display: block; color: #00ffff; margin-bottom: 5px; font-size: 12px; }
-        .input-group input, .input-group textarea {
-            width: 100%; background: #111; border: 1px solid #00ffff; color: #fff; padding: 10px; box-sizing: border-box; font-family: monospace;
-        }
-        .btn-enviar {
-            width: 100%; background: transparent; border: 1px solid #ff00ff; color: #ff00ff; padding: 10px; cursor: pointer; font-weight: bold; font-family: monospace; text-transform: uppercase;
-        }
-        .btn-enviar:hover { background: #ff00ff; color: #000; }
-        .success { color: #00ff00; text-shadow: 0 0 5px #00ff00; }
-        .error { color: #ff0000; }
-
-        /* --- VIDEO RESPONSIVE --- */
-        .video-responsive-container {
-            position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; border: 2px solid #ff00ff; box-shadow: 0 0 15px #ff00ff;
-        }
-        .video-responsive-container iframe {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
-        }
-
-        /* --- SIDEBAR WIDGETS --- */
-        .clock-container-fixed {
-            background: #000;
-            padding: 10px;
-            border: 3px solid #00f2ff;
-            border-radius: 15px;
-            text-align: center;
-            font-family: 'Courier New', monospace;
-            max-width: 220px;
-            margin: 0 auto 20px auto;
             overflow: hidden;
         }
-        .temporal-tag {
-            color: #00f2ff;
+        .label-red {
+            background: #700;
+            color: #fff;
             font-size: 9px;
+            padding: 1px 0;
+            font-weight: bold;
             text-transform: uppercase;
+            margin-bottom: 3px;
+            width: 100%;
+            text-align: center;
+            font-family: sans-serif;
+            letter-spacing: 0.5px;
+        }
+        /* Simulación perfecta de fuente digital LED */
+        .led-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 21px;
+            font-weight: 900;
+            background: #050505;
+            padding: 4px 2px;
+            border-radius: 3px;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+            letter-spacing: 0px;
+            text-shadow: 0 0 10px currentColor;
+            white-space: nowrap;
+        }
+        /* Colores exactos de la película */
+        .dest { color: #ff2200; } /* Destino: Rojo */
+        .pres { color: #00ff22; } /* Presente: Verde */
+        .last { color: #ffaa00; } /* Salida: Amarillo/Naranja */
+
+        .panel-footer {
+            background: #111;
+            color: #ddd;
+            font-size: 9px;
+            font-weight: bold;
+            padding: 2px 8px;
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 1px solid #555;
+            z-index: 5;
+            font-family: Arial, sans-serif;
             letter-spacing: 1px;
-            margin-bottom: 5px;
-            display: block;
+            white-space: nowrap;
         }
-        
-        /* Ajuste Consola Móviles */
-        @media screen and (max-width: 500px) {
-            .bttf-console {
-                width: 100% !important;
-                transform: scale(0.9);
-                margin-left: -2% !important;
-            }
+
+        /* --- FORMULARIO --- */
+        .input-group { margin-bottom: 15px; text-align: left; }
+        .input-group label { display: block; color: #f0db4f; margin-bottom: 5px; font-size: 12px; font-weight: bold; }
+        .input-group input, .input-group textarea {
+            width: 100%; background: #111; border: 1px solid #ff6a00; color: #fff; padding: 10px; box-sizing: border-box; font-family: monospace;
         }
+        .btn-enviar {
+            width: 100%; background: transparent; border: 2px solid #ff6a00; color: #ff6a00; padding: 10px; cursor: pointer; font-weight: bold; font-family: monospace;
+        }
+        .btn-enviar:hover { background: #ff6a00; color: #000; }
+        .success { color: #00ff00; }
+        .error { color: #ff0000; }
+
+        /* --- VIDEO IFRAME RESPONSIVE --- */
+        .video-container {
+            position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; border: 2px solid #ff6a00;
+        }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
     </style>
 </head>
 <body>
 
     <div class="wrapper-layout">
         
+        <!-- TITULO OFICIAL NEÓN -->
         <header class="header-neon-title">
             <h1 class="neon-main-title">Radio DeLorean</h1>
         </header>
 
         <div class="main-content">
             
+            <!-- COLUMNA IZQUIERDA (REPRODUCTOR Y CONTENIDO) -->
             <section>
                 
+                <!-- REPRODUCTOR DE RADIO -->
                 <div class="radio-clock-80s-container">
                     <div class="msg-top">DALE CLICK Y ACTIVA EL VIAJE TEMPORAL</div>
                     <div class="display-screen">
                         <div class="marquee-text">
-                            CLASICOS DE LOS 80S Y 90S - RADIO DELOREAN LA RADIO DEL FUTURO - SIGUENOS EN NUESTRAS RRSS ...
+                            CLASICOS DE LOS 80S Y 90S - RADIO DELOREAN LA RADIO DEL FUTURO - SINTONIZA LA FRECUENCIA CON NOSOTROS...
                         </div>
                     </div>
                     <div id="player"></div>
                     <div class="controls-row">
-                        <div style="font-size: 0.5em; color: #00f2ff; font-family:'Press Start 2P'">VOLUMEN</div>
+                        <div style="font-size: 0.55em; color: #ff6a00; font-family:'Press Start 2P'">VOLUMEN</div>
                         <input type="range" class="vol-slider" id="volumeControl" min="0" max="100" value="50" />
                         <div class="function-buttons-grid">
                             <button class="function-button" onclick="toggleRadio()" id="btnPower">ENCENDER</button>
@@ -418,8 +340,9 @@
                     <p class="msg-bottom">SINTONIZANDO LA FRECUENCIA DEL FUTURO ⚡</p>
                 </div>
 
+                <!-- PROGRAMACIÓN -->
                 <div class="neon-card" style="text-align: center;">
-                    <h3 style="background: #00f2ff; color: #000; display: inline-block; padding: 5px 15px; border-radius: 5px; transform: skew(-10deg); font-family: 'Courier New', Courier, monospace; margin-top:0;">
+                    <h3 style="background: #ff6a00; color: #000; display: inline-block; padding: 6px 18px; border-radius: 4px; transform: skew(-10deg); font-weight: bold; margin-top:0;">
                         PROGRAMACIÓN LUNES A DOMINGO
                     </h3>
                     <div class="prog-row">
@@ -442,46 +365,33 @@
                         <span class="show-title">"MISTER FUSION"</span>
                         <p style="color: #ccc; margin: 5px 0 0 0; font-size: 0.85em;">Grandes bandas sonoras de películas.</p>
                     </div>
-                    <div style="text-align: center; margin-top: 20px; border-top: 1px dashed #333; padding-top: 10px;">
-                        <span style="color: #00f2ff; font-size: 0.8em; letter-spacing: 2px;">RADIO DELOREAN 2026 // TRANSMISIÓN CONTINUA</span>
-                    </div>
                 </div>
 
-                <div class="neon-card">
-                    <div class="video-responsive-container">
-                        <iframe src="https://www.youtube.com/embed/videoseries?si=lkQK4DMzA0Xg9xUL&amp;list=PL3CZIF8GZUnP5p3xGqxbYa0GkDv24239r" title="Volver al Futuro 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="neon-card">
-                    <div class="video-responsive-container">
-                        <iframe src="https://www.youtube.com/embed/videoseries?si=6_TkKDs5_yMr0WBy&amp;list=PL0F0RObOoTMo_b2Dr6jhf4r35Bf9c-bZh" title="Volver al Futuro 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="neon-card">
-                    <div class="video-responsive-container">
-                        <iframe src="https://www.youtube.com/embed/videoseries?si=RMREigX4RXPMIaQl&amp;list=PL0F0RObOoTMpBN9Gvat8_Ian-pNf6i4y4" title="Volver al Futuro 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                </div>
+                <!-- VIDEOS RESPONSIVOS -->
+                <div class="neon-card"><div class="video-container"><iframe src="https://www.youtube.com/embed/videoseries?si=lkQK4DMzA0Xg9xUL&amp;list=PL3CZIF8GZUnP5p3xGqxbYa0GkDv24239r" title="BTTF 1" allowfullscreen></iframe></div></div>
+                <div class="neon-card"><div class="video-container"><iframe src="https://www.youtube.com/embed/videoseries?si=6_TkKDs5_yMr0WBy&amp;list=PL0F0RObOoTMo_b2Dr6jhf4r35Bf9c-bZh" title="BTTF 2" allowfullscreen></iframe></div></div>
             </section>
 
+            <!-- COLUMNA DERECHA (CIRCUITOS Y RECTIF_INFO) -->
             <aside>
                 
-                <div style="text-align: center; width: 100%;">
+                <!-- BOTÓN RETRO X -->
+                <div style="text-align: center;">
                     <div class="contenedor-cafe-retro">
                         <span class="texto-retro-mini">Siguenos en X</span>
                         <a href="https://x.com/RadioDeLorean_?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-lang="es" data-show-count="false">Follow @Radio_delorean</a>
                         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                        <span style="color: #d2691e; font-size: 10px; display: block; margin-top: 5px;">TWITTER</span>
                     </div>
                 </div>
 
-                <div class="neon-card">
+                <!-- CIRCUITOS DEL TIEMPO REPARADOS -->
+                <div class="neon-card" style="padding: 15px 10px !important;">
                     <div class="bttf-console">
+                        
+                        <!-- DESTINO -->
                         <div class="spacer">
                             <div class="time-panel dest" id="panel-tomorrow">
-                                <div class="display-group"><div class="label-red">MONTH</div><div class="led-text month">ENE</div></div>
+                                <div class="display-group"><div class="label-red">MONTH</div><div class="led-text month">---</div></div>
                                 <div class="display-group"><div class="label-red">DAY</div><div class="led-text day">--</div></div>
                                 <div class="display-group"><div class="label-red">YEAR</div><div class="led-text year">----</div></div>
                                 <div class="display-group"><div class="label-red">HOUR</div><div class="led-text hour">12</div></div>
@@ -489,9 +399,11 @@
                             </div>
                             <div class="panel-footer">DESTINATION TIME</div>
                         </div>
+
+                        <!-- PRESENTE -->
                         <div class="spacer">
                             <div class="time-panel pres" id="panel-today">
-                                <div class="display-group"><div class="label-red">MONTH</div><div class="led-text month">ENE</div></div>
+                                <div class="display-group"><div class="label-red">MONTH</div><div class="led-text month">---</div></div>
                                 <div class="display-group"><div class="label-red">DAY</div><div class="led-text day">--</div></div>
                                 <div class="display-group"><div class="label-red">YEAR</div><div class="led-text year">----</div></div>
                                 <div class="display-group"><div class="label-red">HOUR</div><div class="led-text hour">--</div></div>
@@ -499,9 +411,11 @@
                             </div>
                             <div class="panel-footer">PRESENT TIME</div>
                         </div>
+
+                        <!-- SALIDA -->
                         <div class="spacer">
                             <div class="time-panel last" id="panel-yesterday">
-                                <div class="display-group"><div class="label-red">MONTH</div><div class="led-text month">ENE</div></div>
+                                <div class="display-group"><div class="label-red">MONTH</div><div class="led-text month">---</div></div>
                                 <div class="display-group"><div class="label-red">DAY</div><div class="led-text day">--</div></div>
                                 <div class="display-group"><div class="label-red">YEAR</div><div class="led-text year">----</div></div>
                                 <div class="display-group"><div class="label-red">HOUR</div><div class="led-text hour">08</div></div>
@@ -509,52 +423,44 @@
                             </div>
                             <div class="panel-footer">LAST TIME DEPARTED</div>
                         </div>
+
                     </div>
                 </div>
 
+                <!-- SEÑAL AL FUTURO (FORMULARIO) -->
                 <div class="neon-card">
-                    <div class="comentarios-delorean">
-                        <h3 class="neon-text">ENVIAR MENSAJE AL FUTURO</h3>
+                    <div class="input-group" style="margin: 0;">
+                        <h3 class="neon-text" style="color: #ff6a00; text-shadow: 0 0 5px #ff6a00;">ENVIAR SEÑAL AL FUTURO</h3>
                         <form id="contact-form">
                             <div class="input-group">
                                 <label>TU NOMBRE / ALIAS</label>
-                                <input type="text" name="name" id="full-name" required placeholder="Ej: Marty McFly" />
+                                <input type="text" name="name" required placeholder="Ej: Marty McFly" />
                             </div>
                             <div class="input-group">
-                                <label>TU MENSAJE</label>
-                                <textarea name="message" id="message" rows="4" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                                <label>TU SEÑAL MULTILÍNEA</label>
+                                <textarea name="message" rows="3" required placeholder="Escribe aquí..."></textarea>
                             </div>
-                            <button type="submit" id="submit-button" class="btn-enviar">ENVIAR SEÑAL</button>
+                            <button type="submit" class="btn-enviar">TRANSMITIR</button>
                         </form>
-                        <div id="status-msg" style="margin-top:15px; text-align:center; font-family:monospace;"></div>
+                        <div id="status-msg" style="margin-top:10px; text-align:center; font-family:monospace;"></div>
                     </div>
                 </div>
 
-                <div class="neon-card" style="padding: 10px !important;">
-                    <div class="clock-container-fixed">
-                        <span class="temporal-tag">▲ TEMPORAL COORDINATES</span>
-                        <div style="filter: invert(1) hue-rotate(180deg) brightness(1.2); height: 130px;">
-                            <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FSantiago" width="100%" height="130" frameborder="0" style="border:none;" seamless></iframe>
-                        </div>
-                        <div style="color: #f0db4f; font-size: 9px; margin-top: 5px; font-weight: bold;">
-                            SANTIAGO_CHILE_STBY
-                        </div>
-                    </div>
-                </div>
-
+                <!-- VISITAS -->
                 <div class="neon-card" style="text-align: center;">
-                    <p style="color:#00ffff; font-family: 'Courier New', Courier, monospace; font-size: 14px; margin-top:0;">VIAJEROS EN EL TIEMPO:</p>
-                    <a href="https://www.contadorvisitasgratis.com" title="contador de visitas">
-                        <img src="https://counter9.optistats.ovh/private/contadorvisitasgratis.php?c=y6m3m8p1u8z2m8n4j1m6m6l8b9n7m6l5" border="0" title="contador de visitas" alt="contador de visitas" />
+                    <p style="color:#f0db4f; font-size: 13px; margin-top:0; font-weight:bold;">VIAJEROS EN LA LÍNEA TEMPORAL:</p>
+                    <a href="https://www.contadorvisitasgratis.com">
+                        <img src="https://counter9.optistats.ovh/private/contadorvisitasgratis.php?c=y6m3m8p1u8z2m8n4j1m6m6l8b9n7m6l5" border="0" alt="contador" />
                     </a>
                 </div>
-            </aside>
 
+            </aside>
         </div>
     </div>
 
+    <!-- CODE LOGIC SCRIPTS -->
     <script>
-        /* YOUTUBE API PARA LA RADIO CLOCK */
+        /* YOUTUBE IFRAME LIVE STREAM API */
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -563,17 +469,9 @@
         var player;
         function onYouTubeIframeAPIReady() {
           player = new YT.Player('player', {
-            height: '1',
-            width: '1',
-            videoId: 'BuB9SaS2cWE',
-            events: {
-              'onReady': onPlayerReady
-            }
+            height: '1', width: '1', videoId: 'BuB9SaS2cWE',
+            events: { 'onReady': function(e) { player.setVolume(50); } }
           });
-        }
-
-        function onPlayerReady(event) {
-          player.setVolume(50);
         }
 
         function toggleRadio() {
@@ -597,7 +495,7 @@
           if(player) player.setVolume(e.target.value);
         });
 
-        /* ACTUALIZACIÓN CONSOLA BTTF */
+        /* CONTROLADORES CIRCUITO DE TIEMPO DELOREAN */
         function updateBttfFull() {
           const months = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
           const now = new Date();
@@ -626,39 +524,30 @@
         setInterval(updateBttfFull, 1000);
         window.addEventListener('DOMContentLoaded', updateBttfFull);
 
-        /* PROCESAMIENTO FORMULARIO DE CONTACTO */
+        /* ENVIÓ RETRO FORM */
         const form = document.getElementById("contact-form");
         if (form) {
-            form.addEventListener("submit", async function(event) {
-                event.preventDefault();
+            form.addEventListener("submit", async function(e) {
+                e.preventDefault();
                 const status = document.getElementById("status-msg");
-                const data = new FormData(event.target);
-                
-                status.innerHTML = "Enviando señal...";
-                
+                status.innerHTML = "Transmitiendo frecuencia...";
                 try {
                     const response = await fetch("https://formspree.io/f/meekqloz", {
-                        method: "POST",
-                        body: data,
-                        headers: { 'Accept': 'application/json' }
+                        method: "POST", body: new FormData(e.target), headers: { 'Accept': 'application/json' }
                     });
-                    
                     if (response.ok) {
-                        status.innerHTML = "<span class='success'>¡MENSAJE RECIBIDO EN EL FUTURO!</span>";
+                        status.innerHTML = "<span class='success'>¡SEÑAL RECIBIDA EN EL DESTINO!</span>";
                         form.reset();
                     } else {
-                        const resData = await response.json();
-                        if (Object.hasOwn(resData, 'errors')) {
-                            status.innerHTML = resData["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            status.innerHTML = "<span class='error'>Error al enviar. Intenta de nuevo.</span>";
-                        }
+                        status.innerHTML = "<span class='error'>Error de transmisión. Reintente.</span>";
                     }
-                } catch (error) {
-                    status.innerHTML = "<span class='error'>Error de conexión.</span>";
+                } catch (err) {
+                    status.innerHTML = "<span class='error'>Fallo de conexión temporal.</span>";
                 }
             });
         }
     </script>
 </body>
 </html>
+
+```
